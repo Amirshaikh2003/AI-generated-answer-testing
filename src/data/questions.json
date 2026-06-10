@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "question": "Write short note on Ethernet"
+  },
+  {
+    "id": 2,
+    "question": "What is Object-Oriented Programming?"
+  },
+  {
+    "id": 3,
+    "question": "Explain the concept of normalization in databases."
+  },
+  {
+    "id": 4,
+    "question": "Difference between REST and GraphQL APIs."
+  },
+  {
+    "id": 5,
+    "question": "What is the time complexity of binary search?"
+  }
+]
