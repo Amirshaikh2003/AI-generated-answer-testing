@@ -1,9 +1,9 @@
-import MarkdownBlock from "./MarkdownBlock";
-import ImageBlock from "./ImageBlock";
-import TableBlock from "./TableBlock";
-import StepsBlock from "./StepsBlock";
-import CodeBlock from "./CodeBlock";
-import MermaidBlock from "./MermaidBlock";
+import MarkdownBlock from "./MarkdownBlock.jsx";
+import ImageBlock from "./ImageBlock.jsx";
+import TableBlock from "./TableBlock.jsx";
+import StepsBlock from "./StepsBlock.jsx";
+import CodeBlock from "./CodeBlock.jsx";
+import MermaidBlock from "./MermaidBlock.jsx";
 
 export default function AnswerRenderer({ data }) {
   if (!data) return null;
@@ -23,9 +23,7 @@ export default function AnswerRenderer({ data }) {
         {blocks.length === 0 ? (
           <div className="block empty-answer">
             <h2>Answer blocks not found</h2>
-            <p>
-              Data was loaded, but no valid answer blocks were found.
-            </p>
+            <p>Data was loaded, but no valid answer blocks were found.</p>
           </div>
         ) : (
           blocks.map((block, index) => renderBlock(block, index))
@@ -71,27 +69,17 @@ function renderBlock(block, index) {
 }
 
 function normalizeAnswerData(data) {
-  // Expected:
-  // data.answer.question
-  // data.answer.answer[]
-
   if (
     data?.answer &&
     typeof data.answer === "object" &&
     Array.isArray(data.answer.answer)
   ) {
     return {
-      question:
-        data.answer.question ||
-        data.question ||
-        "Question unavailable",
+      question: data.answer.question || data.question || "Question unavailable",
       blocks: data.answer.answer,
     };
   }
 
-  // Direct:
-  // data.question
-  // data.answer[]
   if (data?.question && Array.isArray(data?.answer)) {
     return {
       question: data.question,
@@ -100,10 +88,7 @@ function normalizeAnswerData(data) {
   }
 
   return {
-    question:
-      data?.answer?.question ||
-      data?.question ||
-      "Question unavailable",
+    question: data?.answer?.question || data?.question || "Question unavailable",
     blocks: [],
   };
 }
